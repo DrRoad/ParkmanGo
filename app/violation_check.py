@@ -3,8 +3,7 @@ from selenium import webdriver
 import pandas as pd
 
 def Ticket_check(plate_number):
-    driver_path = '/Users/pengfeiwang/Downloads/ots/chromedriver'
-    driver = webdriver.Chrome(driver_path)
+    driver = webdriver.PhantomJS()
     url = 'http://www1.nyc.gov/nyc-resources/service/2195/pay-a-parking-ticket'
     driver.get(url)
     try:
@@ -16,8 +15,6 @@ def Ticket_check(plate_number):
     driver.find_element_by_id('search_next').click()
     try:
         summary = driver.find_element_by_class_name('results-summary-label').text
-#         money_owned = driver.find_element_by_class_name('total-amount-owed-value').text
-#         print summary,money_owned
         col_length = len(driver.find_elements_by_class_name('expander-icon'))
         for i in range(col_length):
             driver.find_elements_by_class_name('expander-icon')[i].click()
