@@ -2,9 +2,10 @@ import selenium
 from selenium import webdriver
 import pandas as pd
 
+# require to build env in shiny.io
+
 def Ticket_check(plate_number):
-    driver_path = '/Users/pengfeiwang/Downloads/ots/chromedriver'
-    driver = webdriver.Chrome(driver_path)
+    driver = webdriver.PHANTOMJS()
     url = 'http://www1.nyc.gov/nyc-resources/service/2195/pay-a-parking-ticket'
     driver.get(url)
     try:
